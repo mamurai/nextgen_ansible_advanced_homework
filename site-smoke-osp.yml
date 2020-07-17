@@ -3,6 +3,10 @@
   tasks:
   - name: OpenStack servers
   - name: Curl website
+    url: "http://
+      return_content: yes
+      status_code: 200
+    register: webpage
 
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
