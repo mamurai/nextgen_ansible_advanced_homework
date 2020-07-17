@@ -15,7 +15,7 @@
     mode: 0644
  
 - name: install base tools and packages
-  yum:
+  package:
     name: "{{ item }}" 
     state: latest
   with_items:
