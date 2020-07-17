@@ -1,11 +1,10 @@
 ---
 # tasks file for lb-tier
-- name: install {{ payload }}
+- name: install "{{ payload }}"
   yum:
     name: "{{ payload }}"
     state: latest
-  notify:
-    - start "{{ payload }}"
+  notify: start "{{ payload }}"
 
 - name: enable {{ payload }} at boot
   service:

@@ -3,8 +3,7 @@
   package:
     name: "{{ payload }}"
     state: latest
-  notify:
-    - start "{{ payload }}"
+  notify: start "{{ payload }}"
 
 - name: enable "{{ payload }}" at boot
   service:
