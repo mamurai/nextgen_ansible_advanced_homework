@@ -7,15 +7,19 @@
     register: result
 
   - name: Curl website
-    url: 'http://"{{ item.accessIPv4 }}'
+    uri:
+      url: 'http://"{{ item.accessIPv4 }}'
       return_content: yes
       status_code: 200
     when: '"frontend" in item.hostname'
     with_items: "{{result.openstack_servers}}"
     register: webpage
 
+#  - debug:
+#      msg: "{{ webpage.results[3].content }}"
+
   - name: Fail if 'Ansible has done its job' is not in the page content
     fail:
-    when: "'Ansible has done its job' not in webpage.results[0].content"
+    when: "'Ansible has done its job' not in webpage.results[3].content"
     tags:
       - osp.smoke
