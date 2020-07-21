@@ -1,5 +1,6 @@
 ---
 - name: uninstall "{{ payload }}"
+  package:
     name: "{{ payload }}"
     state: absent
 

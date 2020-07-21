@@ -1,11 +1,12 @@
 ---
 # tasks file for lb-tier
 - name: uninstall "{{ payload }}"
+  package:
     name: "{{ payload }}"
     state: absent
 
 - name: install "{{ payload }}"
-  yum:
+  package:
     name: "{{ payload }}"
     state: latest
   notify: start "{{ payload }}"
