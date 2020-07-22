@@ -37,19 +37,6 @@
   tags:
   - test.servers
 
-- name: Add floating IP to Servers
-  os_floating_ip:
-    cloud: openstack
-    state: present
-    reuse: yes
-    server: "{{ item.value.name }}"
-    network: ext_network
-    wait: true
-    timeout: 200
-  with_dict: "{{osp_servers}}"
-  tags:
-  - test.servers
-
 - name: OpenStack servers
   os_server_info:
     cloud: openstack
