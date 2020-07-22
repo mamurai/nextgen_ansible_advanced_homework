@@ -51,7 +51,7 @@
   - test.servers
 
 - name: OpenStack servers
-  os_server_facts:
+  os_server_info:
     cloud: openstack
   register: result
   tags:
@@ -65,7 +65,7 @@
     timeout: 600
   delegate_to: "{{ inventory_hostname }}"
   with_items:
-    - "{{ result.ansible_facts.openstack_servers }}"
+    - "{{ result.openstack_servers }}"
   tags:
     - test.servers
 
